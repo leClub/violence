@@ -22,13 +22,17 @@
 
         <!-- jQuery -->
         <script src="bower_components/jquery/dist/jquery.js"></script>
+        
         <!-- Mapbox -->
         <script src="bower_components/mapbox.js/mapbox.js"></script>
+        
         <!-- SheetSee -->
-        <script src="bower_components/sheetsee/js/sheetsee.js"></script>
-        <script src="bower_components/tabletop/src/tabletop.js"></script>
 
-        <script type="text/javascript">
+        <!-- 
+        <script src="bower_components/sheetsee/js/sheetsee.js"></script>
+         -->
+        <script src="bower_components/tabletop/src/tabletop.js"></script>
+        <!-- <script type="text/javascript">
 
           document.addEventListener('DOMContentLoaded', function() {
             var URL = "0Aul9Ys3cd80fdHVMd0luQW5NYkVZNkhORmI0ajFma2c"
@@ -36,6 +40,24 @@
           })
 
           function showInfo(data) {
+            console.log(data);
+          }
+        </script> -->
+        <script type="text/javascript">
+          window.onload = function() { init() };
+
+          var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/ccc?key=0ArNEXxu0b66PdHdrWi1MdDZsSnpqcjlUMDBic1hud0E#gid=0';
+
+          function init() {
+            console.log("data is loading...");
+
+            Tabletop.init( { key: public_spreadsheet_url,
+                             callback: showInfo,
+                             simpleSheet: true } )
+          }
+
+          function showInfo(data, tabletop) {
+            alert("Successfully processed!")
             console.log(data);
           }
         </script>
