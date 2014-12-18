@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Title Page</title>
+
+
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <h1 class="text-center">Violence</h1>
+        <p><em><a href="https://docs.google.com/spreadsheet/ccc?key=0Aul9Ys3cd80fdHVMd0luQW5NYkVZNkhORmI0ajFma2c&usp=sharing#gid=0" target="_blank">Data</a></em><p>
+    
+
+        <!-- jQuery -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <!-- Mapbox -->
+        <script src="bower_components/mapbox.js/mapbox.js"></script>
+        <!-- SheetSee -->
+        <script src="bower_components/sheetsee/js/sheetsee.js"></script>
+        <script src="bower_components/tabletop/src/tabletop.js"></script>
+
+        <script type="text/javascript">
+
+          document.addEventListener('DOMContentLoaded', function() {
+            var URL = "0Aul9Ys3cd80fdHVMd0luQW5NYkVZNkhORmI0ajFma2c"
+            Tabletop.init( { key: URL, callback: showInfo, simpleSheet: true } )
+          })
+
+          function showInfo(data) {
+            console.log(data);
+          }
+        </script>
+    </body>
+</html>

@@ -16,6 +16,7 @@
   ],
   "dependencies": {
     "sheetsee": "latest",
-    "mapbox.js" : "latest"
+    "mapbox.js" : "latest",
+    "tabletop" : "latest"
   }
 }
