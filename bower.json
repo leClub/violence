@@ -1,0 +1,21 @@
+{
+  "name": "violence",
+  "version": "0.0.1",
+  "authors": [
+    "Clément Renaud <clement.renaud@gmail.com>",
+    "Clément Ribé <clement.ribe@gmail.com>",
+    "Lionel Radisson <lionel.radisson@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "sheetsee": "latest",
+    "mapbox.js" : "latest"
+  }
+}
