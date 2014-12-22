@@ -1,50 +1,40 @@
 <!DOCTYPE html>
 <html lang="">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Title Page</title>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
+		<title>Violence</title>
 
+		<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css' rel='stylesheet' />
+		<link rel="stylesheet" href="css/style.css">
 
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-    </head>
-    <body>
-        <h1 class="text-center">Violence</h1>
-        <p><em><a href="https://docs.google.com/spreadsheet/ccc?key=0Aul9Ys3cd80fdHVMd0luQW5NYkVZNkhORmI0ajFma2c&usp=sharing#gid=0" target="_blank">Data</a></em><p>
-    
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
 
-        <!-- jQuery -->
-        <script src="bower_components/jquery/dist/jquery.js"></script>
-        
-        <!-- Mapbox -->
-        <script src="bower_components/mapbox.js/mapbox.js"></script>
-        
-        <!-- SheetSee -->
+	<body>
+		<div id="map"></div>
 
-        <!-- 
-        <script src="bower_components/sheetsee/js/sheetsee.js"></script>
-         -->
-        <script src="bower_components/tabletop/src/tabletop.js"></script>
-        <script type="text/javascript">
+		<h1>Violence</h1>
+		<p><em><a href="https://docs.google.com/spreadsheet/ccc?key=0Aul9Ys3cd80fdHVMd0luQW5NYkVZNkhORmI0ajFma2c&usp=sharing#gid=0" target="_blank">Data</a></em><p>
+	
 
-            $( document ).ready(function() {
-                console.info( "jQuery is ready!" );
-                $.getJSON("data.json", function  (data) {
-                    showInfo(data);
-                })
-            });
+		<!-- jQuery -->
+		<script src="bower_components/jquery/dist/jquery.js"></script>
+		
+		<!-- Mapbox -->
+		<script src="bower_components/mapbox.js/mapbox.js"></script>
+		<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js'></script>
 
-          function showInfo(data) {
-            console.info("We got the data !")
-            console.log(data);
-          }
-        </script>
-    </body>
+		<!-- TableTop -->
+		<script src="bower_components/tabletop/src/tabletop.js"></script>
+
+		<script src="js/main.js" type="text/javascript"></script>
+	</body>
 </html>
