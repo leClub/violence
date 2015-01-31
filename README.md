@@ -132,8 +132,3 @@ You Should 1) download CSV file from the  [Google Spreadsheet](https://docs.goog
 
     mongoexport --db violence --collection murders --out db.json
     # exported 3681 records
-
-<<<<<<< HEAD
-=======
-3.  Mapping Data
->>>>>>> d27a2d160b96d64d6b8ef10d6a85062eb97f93af
