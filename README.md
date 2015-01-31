@@ -6,14 +6,6 @@ A visualization of police killings in the USA.
 Based on the data collected from the article *[What I've Learned from Two Years Collecting Data on Police Killings](http://gawker.com/what-ive-learned-from-two-years-collecting-data-on-poli-1625472836)* (raw file available as a [Google Spreadsheet](https://docs.google.com/spreadsheet/ccc?key=0Aul9Ys3cd80fdHVMd0luQW5NYkVZNkhORmI0ajFma2c&usp=sharing#gid=0 ) )
 
 
-
-
-
-## Run
-
-    python run.py # access on http://127.0.0.1:5000/ 
-
-
 ## JSON api
 
 You can access all data through the (basic) API:
@@ -106,6 +98,14 @@ Upload the Mongo dump in the DB ```violence```, collections ```murders```
 
     mongoimport -d violence -c murders data/db.json 
     # 2015-01-31T17:15:39.281+0100 imported 3681 objects
+
+
+
+### Run
+
+Access on http://127.0.0.1:5000
+
+    python run.py 
 
 
 ## Deploy
