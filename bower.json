@@ -15,7 +15,6 @@
     "tests"
   ],
   "dependencies": {
-    "sheetsee": "latest",
     "mapbox.js" : "latest",
     "tabletop" : "latest"
   }
