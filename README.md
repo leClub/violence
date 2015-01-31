@@ -1,7 +1,12 @@
-violence
+Violence
 ========
 
-Maps of police murders in USA. Data is based on the investigation from this [article](http://gawker.com/what-ive-learned-from-two-years-collecting-data-on-poli-1625472836) 
+A visualization of police killings in the USA.
+
+Based on the data collected from the article *[What I've Learned from Two Years Collecting Data on Police Killings](http://gawker.com/what-ive-learned-from-two-years-collecting-data-on-poli-1625472836)* (raw file available as a [Google Spreadsheet](https://docs.google.com/spreadsheet/ccc?key=0Aul9Ys3cd80fdHVMd0luQW5NYkVZNkhORmI0ajFma2c&usp=sharing#gid=0 ) )
+
+
+
 
 
 ## Run
@@ -53,10 +58,37 @@ return an array of objects containing all murders with only a few fields _id, ti
         ....
         ]
 
-* ```GET /api/murders/:id```
+```GET /api/murders/:id```
 return an object containing a single murder
 
-
+    {
+        : "3400 block of Duke St. : Police arrived at a home and shot and killed Sellars, who they say had a gun. The Alexandria Police Department refuses to release any other information about this incident, citing department policy. http://www.alexandriagazette.com/news/2013/feb/21/alexandria-police-shield-information-shooting/",
+        City: "Alexandria",
+        DateOfDeath: "February 18, 2013",
+        State: "VA",
+        DescriptionOfCircumstances: "Police arrived at a home and shot and killed Sellars, who they say had a gun. The Alexandria Police Department refuses to release any other information about this incident, citing department policy.",
+        OfficialDisposition: "",
+        UniqueIdentifier: "",
+        RaceEthnicity: "African-American/Black",
+        Age: "30",
+        SymptomsOfMentalIllness: "",
+        StreetAddress: "3400 block of Duke St. ",
+        CauseOfDeathShort: "Gunshot",
+        AgencyResponsible: "Alexandria Police Department",
+        geo: {
+            ...
+        },
+        FullName: "Taft Sellars",
+        LinkToNewsStoryOrPublicDocument: "http://www.alexandriagazette.com/news/2013/feb/21/alexandria-police-shield-information-shooting/",
+        LinkToImageUrl: "http://alextimes.com/wp-content/uploads/2013/02/Taft-Sellers.jpeg",
+        ZipCode: "22304",
+        Sex: "Male",
+        County: "Alexandria City",
+        SourceSubmittedBy: "Pieces of this data came from Wikipedia. Creative Commons Attribution-ShareAlike License. Does not imply an endorsement of this project.",
+        DateEntered: "11/10/2013 21:00:38",
+        _id: "54cd10d4eea7216d79d0948f",
+        CleanDateOfDeath: "2013-02-18T00:00:00+00:00"
+    }
 
 ## Setup
 
@@ -101,3 +133,7 @@ You Should 1) download CSV file from the  [Google Spreadsheet](https://docs.goog
     mongoexport --db violence --collection murders --out db.json
     # exported 3681 records
 
+<<<<<<< HEAD
+=======
+3.  Mapping Data
+>>>>>>> d27a2d160b96d64d6b8ef10d6a85062eb97f93af
