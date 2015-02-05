@@ -1,50 +1,104 @@
 <!DOCTYPE html>
 <html lang="">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Violence | Murder</title>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Violence | Murder</title>
+    {% assets "main_scss" %}
+    <link rel=stylesheet type=text/css href="{{ ASSET_URL }}">
+    {% endassets %}
 
-        {% assets "main_scss" %}
-            <link rel=stylesheet type=text/css href="{{ ASSET_URL }}">
-        {% endassets %}
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
+</head>
+<body>
+    <canvas id="map">ohh!!! :(</canvas>
 
-    </head>
-    <body>
-        <h1 class="text-center">Violence</h1>
-        <h3><a href="https://docs.google.com/spreadsheet/ccc?key=0Aul9Ys3cd80fdHVMd0luQW5NYkVZNkhORmI0ajFma2c&usp=sharing#gid=0" target="_blank"> Get the Data</h3>
-    
+    <h1 class="text-center">Violence</h1>
 
-        <!-- jQuery -->
-        <script src="lib/jquery/dist/jquery.js"></script>
-        
-        <!-- Mapbox -->
-        <script src="lib/mapbox.js/mapbox.js"></script>
+    <h3><a href="https://docs.google.com/spreadsheet/ccc?key=0Aul9Ys3cd80fdHVMd0luQW5NYkVZNkhORmI0ajFma2c&usp=sharing#gid=0"
+        target="_blank"> Get the Data</a></h3>
 
-        <script src="js/main.js"></script>
-        <script src="lib/tabletop/src/tabletop.js"></script>
-        <script type="text/javascript">
 
-            $( document ).ready(function() {
-                console.info( "jQuery is ready!" );
-                $.getJSON("api/murders", function  (data) {
-                    showInfo(data);
-                })
-            });
+    <!-- jQuery -->
+    <script src="lib/jquery/dist/jquery.js"></script>
 
-          function showInfo(data) {
-            console.info("We got the data !")
-            console.log(data);
-          }
-        </script>
-    </body>
+    <!-- Mapbox -->
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js'></script>
+
+    <script src="js/main.js"></script>
+    <script src="lib/tabletop/src/tabletop.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            var murders = [];
+            var xMin = 99999,
+                xMax = -99999,
+                yMin = 99999,
+                yMax = -99999;
+
+            $.getJSON("api/murders", function (data) {
+                showInfo(data);
+
+
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].geo.geometry !== undefined) {
+                        if(data[i].geo.geometry.coordinates[0] > -140){
+                            if (data[i].geo.geometry.coordinates[0] < xMin) xMin = data[i].geo.geometry.coordinates[0];
+                            else if (data[i].geo.geometry.coordinates[0] > xMax) xMax = data[i].geo.geometry.coordinates[0];
+                            if (data[i].geo.geometry.coordinates[1] < yMin) yMin = data[i].geo.geometry.coordinates[1];
+                            else if (data[i].geo.geometry.coordinates[1] > yMax) yMax = data[i].geo.geometry.coordinates[1];
+
+                            murders.push(data[i]);
+                        }
+                    }
+                }
+                console.log(xMin, xMax, yMin, yMax);
+            })
+
+            function showInfo(data) {
+                console.info("We got the data !")
+                //console.log(data);
+            }
+
+            var canvas = document.getElementById('map');
+            var ctx = canvas.getContext("2d");
+            var width = window.innerWidth;
+            var height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+
+
+            var map = function(value, istart, istop, ostart, ostop) {
+                return ostart + (ostop - ostart) * ((value - istart) / (istop - istart));
+            };
+
+            function render(){
+                ctx.fillStyle = "#FFF";
+                ctx.fillRect(0, 0, width, height);
+
+                ctx.fillStyle = "rgba(255,0,0,0.3)";
+                ctx.strokeStyle = "rgba(0,0,0,0)";
+                if(murders.length>0){
+                    for (var i=0 ;i<murders.length; i++){
+                        if(murders[i].geo.geometry.coordinates[0] == xMin)console.log(murders[i]._id);
+                        ctx.fillRect(map(murders[i].geo.geometry.coordinates[0],xMin, xMax,0, width), map(murders[i].geo.geometry.coordinates[1],yMin, yMax,0, height),5,5);
+                    }
+
+                }
+
+                window.requestAnimationFrame(render);
+            }
+            render();
+        });
+
+    </script>
+</body>
 
 </html>
